@@ -429,12 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="section">
                     <h2>Contacto</h2>
-                    <div class="contact-info">
-                        <p><strong>Email:</strong> contacto@nexumsolutions.com</p>
-                        <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
-                        <p><strong>Ubicación:</strong> Santiago, Chile</p>
-                        <p><strong>Web:</strong> www.nexumsolutions.com</p>
-                    </div>
+                    <p style="margin-bottom: 16px;">Para más información sobre nuestros servicios y soluciones, lo invitamos a visitar nuestro sitio web y completar el formulario de contacto.</p>
                     <p style="margin-top: 20px; font-style: italic; color: #64748b;">
                         "Conectando la estrategia con el futuro digital."
                     </p>
