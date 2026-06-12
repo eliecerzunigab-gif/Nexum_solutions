@@ -74,12 +74,12 @@
         }
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* ===== HEADER ===== */
         .vmo-header {
             background: var(--gradient-hero);
-            padding: 20px 0;
+            padding: 18px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -90,7 +90,7 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 14px;
         }
         .vmo-logo {
             display: flex;
@@ -99,30 +99,30 @@
             color: white;
         }
         .vmo-logo-icon {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             background: var(--gradient-1);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
-        .vmo-logo-text { font-size: 1.3rem; font-weight: 800; }
+        .vmo-logo-text { font-size: 1.2rem; font-weight: 800; }
         .vmo-logo-text span { color: var(--accent); }
-        .vmo-logo-sub { font-size: 0.75rem; opacity: 0.6; display: block; font-weight: 400; }
+        .vmo-logo-sub { font-size: 0.7rem; opacity: 0.6; display: block; font-weight: 400; }
 
         .vmo-header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .vmo-header-actions a {
             color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 7px 14px;
             border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.15);
             transition: var(--transition);
@@ -135,52 +135,52 @@
             background: var(--gradient-1);
             border: none;
             color: white;
-            padding: 8px 20px;
+            padding: 7px 18px;
         }
 
         /* ===== DASHBOARD ===== */
-        .dashboard {
-            padding: 32px 0;
-        }
+        .dashboard { padding: 28px 0; }
 
         /* Stats Cards */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 32px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
         .stat-card {
             background: var(--bg-white);
             border-radius: var(--radius-md);
-            padding: 24px;
+            padding: 20px;
             border: 1px solid var(--border);
             transition: var(--transition);
+            text-align: center;
         }
         .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
         .stat-card-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         .stat-card-header i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--primary);
             opacity: 0.7;
         }
         .stat-card-label {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
             font-weight: 500;
         }
         .stat-card-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--text-primary);
         }
         .stat-card-change {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             margin-top: 4px;
         }
         .stat-card-change.up { color: var(--success); }
@@ -190,8 +190,8 @@
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .card {
@@ -201,24 +201,24 @@
             overflow: hidden;
         }
         .card-header {
-            padding: 20px 24px;
+            padding: 16px 20px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         .card-header h3 {
-            font-size: 1rem;
+            font-size: 0.92rem;
             font-weight: 700;
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .card-header h3 i { color: var(--primary); }
+        .card-header h3 i { color: var(--primary); font-size: 0.9rem; }
         .card-header .badge {
-            font-size: 0.72rem;
-            padding: 3px 10px;
+            font-size: 0.68rem;
+            padding: 3px 8px;
             border-radius: 50px;
             font-weight: 600;
         }
@@ -227,7 +227,7 @@
         .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
         .badge-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
 
-        .card-body { padding: 20px 24px; }
+        .card-body { padding: 16px 20px; }
 
         /* ===== TABLE ===== */
         .table-responsive {
@@ -237,21 +237,21 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.88rem;
+            font-size: 0.84rem;
         }
         thead th {
             text-align: left;
-            padding: 12px 16px;
+            padding: 10px 14px;
             font-weight: 600;
             color: var(--text-secondary);
             border-bottom: 2px solid var(--border);
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
         tbody td {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--border);
             color: var(--text-primary);
         }
@@ -259,10 +259,10 @@
         .status {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
+            gap: 5px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
         .status.active { background: rgba(16,185,129,0.1); color: var(--success); }
@@ -274,13 +274,13 @@
             display: inline-flex;
             gap: 2px;
             color: #f59e0b;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         .rating .empty { opacity: 0.2; }
 
         .action-btn {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 8px;
             border: 1px solid var(--border);
             background: transparent;
@@ -290,7 +290,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         .action-btn:hover {
             background: var(--primary-bg);
@@ -302,37 +302,37 @@
         .provider-item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px 0;
+            gap: 12px;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
         .provider-item:last-child { border-bottom: none; }
         .provider-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: white;
             flex-shrink: 0;
         }
         .provider-info { flex: 1; min-width: 0; }
         .provider-info h4 {
-            font-size: 0.9rem;
+            font-size: 0.84rem;
             font-weight: 600;
             color: var(--text-primary);
         }
         .provider-info p {
-            font-size: 0.78rem;
+            font-size: 0.74rem;
             color: var(--text-secondary);
         }
         .provider-value {
             font-weight: 700;
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.84rem;
             white-space: nowrap;
         }
 
@@ -340,25 +340,25 @@
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
-        .form-group { margin-bottom: 4px; }
+        .form-group { margin-bottom: 2px; }
         .form-group label {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px 14px;
+            padding: 9px 12px;
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
             font-family: var(--font);
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             color: var(--text-primary);
             background: var(--bg-white);
             transition: var(--transition);
@@ -371,7 +371,7 @@
             box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
         .form-group.full { grid-column: 1 / -1; }
-        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group textarea { resize: vertical; min-height: 70px; }
         .form-group select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
@@ -381,10 +381,10 @@
         }
 
         .btn-form {
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             cursor: pointer;
             transition: var(--transition);
             border: none;
@@ -407,20 +407,20 @@
 
         .form-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: flex-end;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         /* ===== CONTRACT TIMELINE ===== */
         .timeline {
             position: relative;
-            padding-left: 24px;
+            padding-left: 22px;
         }
         .timeline::before {
             content: '';
             position: absolute;
-            left: 8px;
+            left: 7px;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -428,16 +428,16 @@
         }
         .timeline-item {
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 18px;
         }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -20px;
+            left: -18px;
             top: 4px;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--primary);
             border: 2px solid var(--bg-white);
@@ -446,17 +446,17 @@
         .timeline-item.expiring::before { background: var(--warning); }
         .timeline-item.expired::before { background: var(--danger); }
         .timeline-date {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-light);
             font-weight: 500;
         }
         .timeline-title {
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             font-weight: 600;
             color: var(--text-primary);
         }
         .timeline-desc {
-            font-size: 0.8rem;
+            font-size: 0.76rem;
             color: var(--text-secondary);
         }
 
@@ -475,23 +475,23 @@
         .modal {
             background: var(--bg-white);
             border-radius: var(--radius-lg);
-            max-width: 600px;
+            max-width: 560px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-xl);
         }
         .modal-header {
-            padding: 20px 24px;
+            padding: 18px 22px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .modal-header h3 { font-size: 1.1rem; font-weight: 700; }
+        .modal-header h3 { font-size: 1rem; font-weight: 700; }
         .modal-close {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: none;
             background: var(--bg-light);
@@ -500,11 +500,11 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
         }
         .modal-close:hover { background: var(--danger); color: white; }
-        .modal-body { padding: 24px; }
+        .modal-body { padding: 20px 22px; }
 
         /* ===== TOAST ===== */
         .toast-container {
@@ -514,20 +514,20 @@
             z-index: 2000;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         .toast {
-            padding: 14px 20px;
+            padding: 12px 18px;
             border-radius: var(--radius-sm);
             color: white;
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             font-weight: 500;
             box-shadow: var(--shadow-lg);
             animation: slideIn 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
-            max-width: 380px;
+            gap: 8px;
+            max-width: 360px;
         }
         .toast.success { background: var(--success); }
         .toast.error { background: var(--danger); }
@@ -545,24 +545,24 @@
         @media (max-width: 768px) {
             .vmo-header .container { flex-direction: column; align-items: flex-start; }
             .vmo-header-actions { width: 100%; }
-            .vmo-header-actions a { flex: 1; text-align: center; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .stat-card { padding: 18px; }
-            .stat-card-number { font-size: 1.5rem; }
+            .vmo-header-actions a { flex: 1; text-align: center; font-size: 0.75rem; padding: 6px 10px; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-card { padding: 16px; }
+            .stat-card-number { font-size: 1.4rem; }
             .form-grid { grid-template-columns: 1fr; }
-            .card-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+            .card-header { flex-direction: column; gap: 6px; align-items: flex-start; }
             .container { padding: 0 16px; }
         }
         @media (max-width: 480px) {
             .stats-row { grid-template-columns: 1fr; }
-            .vmo-logo-text { font-size: 1.1rem; }
-            .vmo-header-actions a { font-size: 0.78rem; padding: 6px 12px; }
-            .card-body { padding: 16px; }
+            .vmo-logo-text { font-size: 1rem; }
+            .card-body { padding: 14px; }
             .modal { margin: 10px; }
+            .dashboard { padding: 20px 0; }
         }
 
         /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg-light); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--text-light); }
@@ -596,32 +596,32 @@
             <div class="stats-row">
                 <div class="stat-card">
                     <div class="stat-card-header">
-                        <span class="stat-card-label">Proveedores Activos</span>
                         <i class="fas fa-building"></i>
+                        <span class="stat-card-label">Proveedores Activos</span>
                     </div>
                     <div class="stat-card-number" id="totalProviders">0</div>
                     <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Gestionados</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-header">
-                        <span class="stat-card-label">Contratos Vigentes</span>
                         <i class="fas fa-file-signature"></i>
+                        <span class="stat-card-label">Contratos Vigentes</span>
                     </div>
                     <div class="stat-card-number" id="totalContracts">0</div>
                     <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Activos</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-header">
-                        <span class="stat-card-label">Por Renovar</span>
                         <i class="fas fa-clock"></i>
+                        <span class="stat-card-label">Por Renovar</span>
                     </div>
                     <div class="stat-card-number" id="pendingRenewals">0</div>
                     <div class="stat-card-change down"><i class="fas fa-exclamation-triangle"></i> Próximos 30 días</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-header">
-                        <span class="stat-card-label">Gasto Anual</span>
                         <i class="fas fa-coins"></i>
+                        <span class="stat-card-label">Gasto Anual</span>
                     </div>
                     <div class="stat-card-number" id="annualSpend">$0</div>
                     <div class="stat-card-change up"><i class="fas fa-chart-line"></i> Presupuesto gestionado</div>
@@ -646,12 +646,10 @@
                                         <th>Categoría</th>
                                         <th>Rating</th>
                                         <th>Estado</th>
-                                        <th>Acciones</th>
+                                        <th style="text-align:center;">Acción</th>
                                     </tr>
                                 </thead>
-                                <tbody id="providersTableBody">
-                                    <!-- Rows inserted by JS -->
-                                </tbody>
+                                <tbody id="providersTableBody"></tbody>
                             </table>
                         </div>
                     </div>
@@ -663,9 +661,7 @@
                         <h3><i class="fas fa-trophy"></i> Top Proveedores</h3>
                         <span class="badge badge-success">Mejor valorados</span>
                     </div>
-                    <div class="card-body" id="topProvidersList">
-                        <!-- Inserted by JS -->
-                    </div>
+                    <div class="card-body" id="topProvidersList"></div>
                 </div>
 
                 <!-- Contracts Timeline -->
@@ -675,9 +671,7 @@
                         <span class="badge badge-warning">Próximos 60 días</span>
                     </div>
                     <div class="card-body">
-                        <div class="timeline" id="contractTimeline">
-                            <!-- Inserted by JS -->
-                        </div>
+                        <div class="timeline" id="contractTimeline"></div>
                     </div>
                 </div>
 
@@ -747,12 +741,10 @@
                                     <th>Inicio</th>
                                     <th>Fin</th>
                                     <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th style="text-align:center;">Acción</th>
                                 </tr>
                             </thead>
-                            <tbody id="contractsTableBody">
-                                <!-- Rows inserted by JS -->
-                            </tbody>
+                            <tbody id="contractsTableBody"></tbody>
                         </table>
                     </div>
                 </div>
@@ -904,7 +896,7 @@
         // ==========================================
         function initSampleData() {
             const data = getData();
-            if (data.providers.length > 0) return; // Already has data
+            if (data.providers.length > 0) return;
 
             const sampleProviders = [
                 { id: 1, name: 'Microsoft Corp.', category: 'Cloud', contact: 'John Smith', email: 'john@microsoft.com', phone: '+1 425-882-8080', website: 'https://microsoft.com', services: 'Azure, Office 365, Dynamics 365', notes: 'Proveedor estratégico cloud', rating: 5, status: 'active', createdAt: '2024-01-15' },
@@ -941,7 +933,6 @@
         function renderDashboard() {
             const data = getData();
             
-            // Stats
             const activeProviders = data.providers.filter(p => p.status === 'active').length;
             const activeContracts = data.contracts.filter(c => c.status === 'active').length;
             const today = new Date();
@@ -957,42 +948,30 @@
             document.getElementById('pendingRenewals').textContent = pendingRenewals;
             document.getElementById('annualSpend').textContent = '$' + annualSpend.toLocaleString('en-US');
 
-            // Provider count badge
             document.getElementById('providerCount').textContent = data.providers.length + ' registrados';
             document.getElementById('contractCount').textContent = data.contracts.length + ' registrados';
 
-            // Providers table
             renderProvidersTable(data);
-            
-            // Top providers
             renderTopProviders(data);
-            
-            // Contract timeline
             renderContractTimeline(data);
-            
-            // Contracts table
             renderContractsTable(data);
-            
-            // Update provider select in contract modal
             updateProviderSelect(data);
         }
 
         function renderProvidersTable(data) {
             const tbody = document.getElementById('providersTableBody');
             tbody.innerHTML = '';
-            
             data.providers.forEach(p => {
                 const stars = '★'.repeat(p.rating) + '<span class="empty">' + '★'.repeat(5 - p.rating) + '</span>';
                 const statusClass = p.status === 'active' ? 'active' : p.status === 'review' ? 'review' : 'inactive';
                 const statusText = p.status === 'active' ? 'Activo' : p.status === 'review' ? 'En Revisión' : 'Inactivo';
-                
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><strong>${p.name}</strong></td>
                     <td>${p.category}</td>
                     <td><span class="rating">${stars}</span></td>
                     <td><span class="status ${statusClass}">${statusText}</span></td>
-                    <td>
+                    <td style="text-align:center;">
                         <button class="action-btn" onclick="viewProvider(${p.id})" title="Ver detalle"><i class="fas fa-eye"></i></button>
                         <button class="action-btn" onclick="deleteProvider(${p.id})" title="Eliminar" style="color:var(--danger);"><i class="fas fa-trash"></i></button>
                     </td>
@@ -1004,18 +983,16 @@
         function renderTopProviders(data) {
             const container = document.getElementById('topProvidersList');
             container.innerHTML = '';
-            
             const sorted = [...data.providers].sort((a, b) => b.rating - a.rating).slice(0, 5);
-            
+            const colors = ['#2563eb', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
             sorted.forEach((p, index) => {
-                const colors = ['#2563eb', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
                 const div = document.createElement('div');
                 div.className = 'provider-item';
                 div.innerHTML = `
                     <div class="provider-avatar" style="background:${colors[index]}">${p.name.charAt(0)}</div>
                     <div class="provider-info">
                         <h4>${p.name}</h4>
-                        <p>${p.category} • ${p.services ? p.services.substring(0, 40) + '...' : ''}</p>
+                        <p>${p.category} • ${p.services ? p.services.substring(0, 35) + '...' : ''}</p>
                     </div>
                     <div class="provider-value">
                         <span class="rating">${'★'.repeat(p.rating)}<span class="empty">${'★'.repeat(5 - p.rating)}</span></span>
@@ -1028,32 +1005,24 @@
         function renderContractTimeline(data) {
             const timeline = document.getElementById('contractTimeline');
             timeline.innerHTML = '';
-            
             const today = new Date();
             const sixtyDays = new Date(today.getTime() + 60 * 24 * 60 * 60 * 1000);
-            
             const upcoming = data.contracts
-                .filter(c => {
-                    const endDate = new Date(c.endDate);
-                    return endDate >= today && endDate <= sixtyDays;
-                })
+                .filter(c => { const e = new Date(c.endDate); return e >= today && e <= sixtyDays; })
                 .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
             
             if (upcoming.length === 0) {
-                timeline.innerHTML = '<p style="color:var(--text-secondary);font-size:0.88rem;text-align:center;padding:20px 0;">No hay vencimientos próximos en los próximos 60 días.</p>';
+                timeline.innerHTML = '<p style="color:var(--text-secondary);font-size:0.84rem;text-align:center;padding:16px 0;">No hay vencimientos próximos en los próximos 60 días.</p>';
                 return;
             }
-            
             upcoming.forEach(c => {
                 const endDate = new Date(c.endDate);
                 const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
                 let itemClass = 'timeline-item';
                 let label = 'Vence en ' + daysLeft + ' días';
-                
                 if (daysLeft <= 15) { itemClass += ' expired'; label = '⚠️ VENCE PRONTO'; }
                 else if (daysLeft <= 30) { itemClass += ' expiring'; label = 'Próximo a vencer'; }
                 else { itemClass += ' renewal'; label = 'Renovación programada'; }
-                
                 const div = document.createElement('div');
                 div.className = itemClass;
                 div.innerHTML = `
@@ -1068,19 +1037,16 @@
         function renderContractsTable(data) {
             const tbody = document.getElementById('contractsTableBody');
             tbody.innerHTML = '';
-            
             data.contracts.forEach(c => {
                 const today = new Date();
                 const endDate = new Date(c.endDate);
                 let statusClass = 'active';
                 let statusText = 'Vigente';
-                
                 if (endDate < today) { statusClass = 'inactive'; statusText = 'Vencido'; }
                 else {
                     const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
                     if (daysLeft <= 30) { statusClass = 'pending'; statusText = 'Por vencer (' + daysLeft + 'd)'; }
                 }
-                
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><strong>${c.name}</strong></td>
@@ -1089,7 +1055,7 @@
                     <td>${formatDate(c.startDate)}</td>
                     <td>${formatDate(c.endDate)}</td>
                     <td><span class="status ${statusClass}">${statusText}</span></td>
-                    <td>
+                    <td style="text-align:center;">
                         <button class="action-btn" onclick="deleteContract(${c.id})" title="Eliminar" style="color:var(--danger);"><i class="fas fa-trash"></i></button>
                     </td>
                 `;
@@ -1114,22 +1080,17 @@
         function quickAddProvider(e) {
             e.preventDefault();
             const data = getData();
-            
             const provider = {
                 id: data.nextProviderId++,
                 name: document.getElementById('qpName').value.trim(),
                 category: document.getElementById('qpCategory').value,
                 contact: document.getElementById('qpContact').value.trim(),
                 email: document.getElementById('qpEmail').value.trim(),
-                phone: '',
-                website: '',
+                phone: '', website: '',
                 services: document.getElementById('qpServices').value.trim(),
-                notes: '',
-                rating: 3,
-                status: 'active',
+                notes: '', rating: 3, status: 'active',
                 createdAt: new Date().toISOString().split('T')[0]
             };
-            
             data.providers.push(provider);
             saveData(data);
             renderDashboard();
@@ -1140,7 +1101,6 @@
         function addProvider(e) {
             e.preventDefault();
             const data = getData();
-            
             const provider = {
                 id: data.nextProviderId++,
                 name: document.getElementById('apName').value.trim(),
@@ -1151,11 +1111,9 @@
                 website: document.getElementById('apWebsite').value.trim(),
                 services: document.getElementById('apServices').value.trim(),
                 notes: document.getElementById('apNotes').value.trim(),
-                rating: 3,
-                status: 'active',
+                rating: 3, status: 'active',
                 createdAt: new Date().toISOString().split('T')[0]
             };
-            
             data.providers.push(provider);
             saveData(data);
             renderDashboard();
@@ -1167,15 +1125,12 @@
         function addContract(e) {
             e.preventDefault();
             const data = getData();
-            
             const providerId = parseInt(document.getElementById('acProvider').value);
             const provider = data.providers.find(p => p.id === providerId);
-            
             const contract = {
                 id: data.nextContractId++,
                 name: document.getElementById('acName').value.trim(),
-                providerId: providerId,
-                providerName: provider ? provider.name : 'Desconocido',
+                providerId, providerName: provider ? provider.name : 'Desconocido',
                 value: parseFloat(document.getElementById('acValue').value),
                 type: document.getElementById('acType').value,
                 startDate: document.getElementById('acStart').value,
@@ -1183,7 +1138,6 @@
                 description: document.getElementById('acDescription').value.trim(),
                 status: 'active'
             };
-            
             data.contracts.push(contract);
             saveData(data);
             renderDashboard();
@@ -1196,7 +1150,6 @@
             if (!confirm('¿Está seguro de eliminar este proveedor?')) return;
             const data = getData();
             data.providers = data.providers.filter(p => p.id !== id);
-            // Also remove related contracts
             data.contracts = data.contracts.filter(c => c.providerId !== id);
             saveData(data);
             renderDashboard();
@@ -1214,27 +1167,18 @@
 
         function viewProvider(id) {
             const data = getData();
-            const provider = data.providers.find(p => p.id === id);
-            if (!provider) return;
-            
-            const providerContracts = data.contracts.filter(c => c.providerId === id);
-            const totalValue = providerContracts.reduce((sum, c) => sum + c.value, 0);
-            
+            const p = data.providers.find(x => x.id === id);
+            if (!p) return;
+            const pc = data.contracts.filter(c => c.providerId === id);
+            const tv = pc.reduce((s, c) => s + c.value, 0);
             alert(
-                `📋 ${provider.name}\n` +
-                `━━━━━━━━━━━━━━━━━━\n` +
-                `Categoría: ${provider.category}\n` +
-                `Contacto: ${provider.contact || 'N/A'}\n` +
-                `Email: ${provider.email || 'N/A'}\n` +
-                `Teléfono: ${provider.phone || 'N/A'}\n` +
-                `Web: ${provider.website || 'N/A'}\n` +
-                `Rating: ${'★'.repeat(provider.rating)}${'☆'.repeat(5 - provider.rating)}\n` +
-                `Estado: ${provider.status === 'active' ? 'Activo' : provider.status === 'review' ? 'En Revisión' : 'Inactivo'}\n` +
-                `━━━━━━━━━━━━━━━━━━\n` +
-                `Servicios: ${provider.services || 'No especificados'}\n` +
-                `Contratos activos: ${providerContracts.length}\n` +
-                `Valor total contratos: $${totalValue.toLocaleString('en-US')}\n` +
-                `Notas: ${provider.notes || 'Sin notas'}`
+                `📋 ${p.name}\n━━━━━━━━━━━━━━━━━━\n` +
+                `Categoría: ${p.category}\nContacto: ${p.contact || 'N/A'}\nEmail: ${p.email || 'N/A'}\n` +
+                `Teléfono: ${p.phone || 'N/A'}\nWeb: ${p.website || 'N/A'}\n` +
+                `Rating: ${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}\n` +
+                `Estado: ${p.status === 'active' ? 'Activo' : p.status === 'review' ? 'En Revisión' : 'Inactivo'}\n` +
+                `━━━━━━━━━━━━━━━━━━\nServicios: ${p.services || 'No especificados'}\n` +
+                `Contratos activos: ${pc.length}\nValor total: $${tv.toLocaleString('en-US')}\nNotas: ${p.notes || 'Sin notas'}`
             );
         }
 
@@ -1245,52 +1189,34 @@
             document.getElementById('addProviderModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function openAddContractModal() {
-            const data = getData();
-            updateProviderSelect(data);
+            updateProviderSelect(getData());
             document.getElementById('addContractModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal(id) {
             document.getElementById(id).classList.remove('active');
             document.body.style.overflow = '';
         }
-
-        // Close modal on overlay click
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
+        document.querySelectorAll('.modal-overlay').forEach(o => {
+            o.addEventListener('click', (e) => { if (e.target === o) { o.classList.remove('active'); document.body.style.overflow = ''; } });
         });
-
-        // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
+                document.querySelectorAll('.modal-overlay.active').forEach(o => { o.classList.remove('active'); document.body.style.overflow = ''; });
             }
         });
 
         // ==========================================
-        // TOAST NOTIFICATIONS
+        // TOAST
         // ==========================================
         function showToast(message, type = 'info') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
-            
             const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
             toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
-            
             container.appendChild(toast);
-            
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateX(100%)';
@@ -1299,12 +1225,8 @@
             }, 4000);
         }
 
-        // ==========================================
-        // UTILITY FUNCTIONS
-        // ==========================================
         function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
+            return new Date(dateStr).toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
         }
 
         // ==========================================
