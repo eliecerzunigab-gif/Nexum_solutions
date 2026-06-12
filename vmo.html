@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexum VMO - Vendor Management Office</title>
+    <meta name="description" content="Plataforma VMO de Nexum Solutions - Gestión Estratégica de Proveedores TI">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --primary-bg: rgba(37, 99, 235, 0.08);
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --gradient-1: linear-gradient(135deg, #2563eb, #06b6d4);
+            --gradient-2: linear-gradient(135deg, #1e3a5f, #2563eb);
+            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fc;
+            --bg-dark: #0f172a;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --primary-bg: rgba(59, 130, 246, 0.12);
+                --secondary: #f1f5f9;
+                --accent: #22d3ee;
+                --gradient-1: linear-gradient(135deg, #3b82f6, #22d3ee);
+                --gradient-2: linear-gradient(135deg, #1e293b, #3b82f6);
+                --gradient-hero: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+                --text-primary: #f1f5f9;
+                --text-secondary: #94a3b8;
+                --text-light: #64748b;
+                --bg-white: #0f172a;
+                --bg-light: #1e293b;
+                --bg-dark: #020617;
+                --border: #334155;
+                --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+                --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+                --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            color: var(--text-primary);
+            background: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== HEADER ===== */
+        .vmo-header {
+            background: var(--gradient-hero);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+        .vmo-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .vmo-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+        .vmo-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .vmo-logo-text { font-size: 1.3rem; font-weight: 800; }
+        .vmo-logo-text span { color: var(--accent); }
+        .vmo-logo-sub { font-size: 0.75rem; opacity: 0.6; display: block; font-weight: 400; }
+
+        .vmo-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .vmo-header-actions a {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: var(--transition);
+        }
+        .vmo-header-actions a:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .vmo-header-actions .btn-primary-small {
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+        }
+
+        /* ===== DASHBOARD ===== */
+        .dashboard {
+            padding: 32px 0;
+        }
+
+        /* Stats Cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .stat-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .stat-card-header i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+        .stat-card-label {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .stat-card-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        .stat-card-change {
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+        .stat-card-change.up { color: var(--success); }
+        .stat-card-change.down { color: var(--danger); }
+
+        /* ===== MAIN GRID ===== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-header h3 i { color: var(--primary); }
+        .card-header .badge {
+            font-size: 0.72rem;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .badge-primary { background: var(--primary-bg); color: var(--primary); }
+        .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
+        .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
+        .badge-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+
+        .card-body { padding: 20px 24px; }
+
+        /* ===== TABLE ===== */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        thead th {
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        tbody tr:hover { background: var(--bg-light); }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status.active { background: rgba(16,185,129,0.1); color: var(--success); }
+        .status.pending { background: rgba(245,158,11,0.1); color: var(--warning); }
+        .status.inactive { background: rgba(239,68,68,0.1); color: var(--danger); }
+        .status.review { background: rgba(59,130,246,0.1); color: var(--info); }
+
+        .rating {
+            display: inline-flex;
+            gap: 2px;
+            color: #f59e0b;
+            font-size: 0.8rem;
+        }
+        .rating .empty { opacity: 0.2; }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .action-btn:hover {
+            background: var(--primary-bg);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* ===== PROVIDER LIST ===== */
+        .provider-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .provider-item:last-child { border-bottom: none; }
+        .provider-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .provider-info { flex: 1; min-width: 0; }
+        .provider-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .provider-info p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+        .provider-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* ===== FORM ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group { margin-bottom: 4px; }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font);
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            cursor: pointer;
+        }
+
+        .btn-form {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-form-primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+        .btn-form-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .btn-form-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .btn-form-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        /* ===== CONTRACT TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg-white);
+        }
+        .timeline-item.renewal::before { background: var(--success); }
+        .timeline-item.expiring::before { background: var(--warning); }
+        .timeline-item.expired::before { background: var(--danger); }
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .timeline-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+        }
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-header h3 { font-size: 1.1rem; font-weight: 700; }
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .modal-close:hover { background: var(--danger); color: white; }
+        .modal-body { padding: 24px; }
+
+        /* ===== TOAST ===== */
+        .toast-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            padding: 14px 20px;
+            border-radius: var(--radius-sm);
+            color: white;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 380px;
+        }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--danger); }
+        .toast.info { background: var(--info); }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .main-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .vmo-header .container { flex-direction: column; align-items: flex-start; }
+            .vmo-header-actions { width: 100%; }
+            .vmo-header-actions a { flex: 1; text-align: center; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stat-card { padding: 18px; }
+            .stat-card-number { font-size: 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .card-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+            .container { padding: 0 16px; }
+        }
+        @media (max-width: 480px) {
+            .stats-row { grid-template-columns: 1fr; }
+            .vmo-logo-text { font-size: 1.1rem; }
+            .vmo-header-actions a { font-size: 0.78rem; padding: 6px 12px; }
+            .card-body { padding: 16px; }
+            .modal { margin: 10px; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-light); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-light); }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="vmo-header">
+        <div class="container">
+            <div class="vmo-logo">
+                <div class="vmo-logo-icon"><i class="fas fa-handshake"></i></div>
+                <div>
+                    <div class="vmo-logo-text">Nexum <span>VMO</span></div>
+                    <span class="vmo-logo-sub">Vendor Management Office</span>
+                </div>
+            </div>
+            <div class="vmo-header-actions">
+                <a href="#" onclick="openAddProviderModal()"><i class="fas fa-plus"></i> Nuevo Proveedor</a>
+                <a href="#" onclick="openAddContractModal()"><i class="fas fa-file-contract"></i> Nuevo Contrato</a>
+                <a href="index.html" class="btn-primary-small"><i class="fas fa-arrow-left"></i> Volver a Nexum</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="dashboard">
+        <div class="container">
+
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <span class="stat-card-label">Proveedores Activos</span>
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-card-number" id="totalProviders">0</div>
+                    <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Gestionados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <span class="stat-card-label">Contratos Vigentes</span>
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="stat-card-number" id="totalContracts">0</div>
+                    <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> Activos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <span class="stat-card-label">Por Renovar</span>
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-card-number" id="pendingRenewals">0</div>
+                    <div class="stat-card-change down"><i class="fas fa-exclamation-triangle"></i> Próximos 30 días</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <span class="stat-card-label">Gasto Anual</span>
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-card-number" id="annualSpend">$0</div>
+                    <div class="stat-card-change up"><i class="fas fa-chart-line"></i> Presupuesto gestionado</div>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="main-grid">
+
+                <!-- Providers Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Proveedores</h3>
+                        <span class="badge badge-primary" id="providerCount">0 registrados</span>
+                    </div>
+                    <div class="card-body" style="padding:0;">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Proveedor</th>
+                                        <th>Categoría</th>
+                                        <th>Rating</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="providersTableBody">
+                                    <!-- Rows inserted by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Providers -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-trophy"></i> Top Proveedores</h3>
+                        <span class="badge badge-success">Mejor valorados</span>
+                    </div>
+                    <div class="card-body" id="topProvidersList">
+                        <!-- Inserted by JS -->
+                    </div>
+                </div>
+
+                <!-- Contracts Timeline -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Próximos Vencimientos</h3>
+                        <span class="badge badge-warning">Próximos 60 días</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline" id="contractTimeline">
+                            <!-- Inserted by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Add Provider -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Registro Rápido</h3>
+                        <span class="badge badge-primary">Nuevo proveedor</span>
+                    </div>
+                    <div class="card-body">
+                        <form id="quickProviderForm" onsubmit="quickAddProvider(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nombre del Proveedor</label>
+                                    <input type="text" id="qpName" placeholder="Ej: Microsoft Corp." required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoría</label>
+                                    <select id="qpCategory" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Cloud">Cloud</option>
+                                        <option value="Software">Software</option>
+                                        <option value="Infraestructura">Infraestructura</option>
+                                        <option value="Consultoría">Consultoría</option>
+                                        <option value="Seguridad">Seguridad</option>
+                                        <option value="Telecomunicaciones">Telecomunicaciones</option>
+                                        <option value="Hardware">Hardware</option>
+                                        <option value="Servicios">Servicios</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contacto</label>
+                                    <input type="text" id="qpContact" placeholder="Nombre contacto">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="qpEmail" placeholder="correo@proveedor.com">
+                                </div>
+                                <div class="form-group full">
+                                    <label>Servicios que provee</label>
+                                    <textarea id="qpServices" placeholder="Describa los servicios principales..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-form btn-form-primary"><i class="fas fa-save"></i> Registrar Proveedor</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Contracts Table -->
+            <div class="card" style="margin-bottom:24px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-file-contract"></i> Contratos</h3>
+                    <span class="badge badge-primary" id="contractCount">0 registrados</span>
+                </div>
+                <div class="card-body" style="padding:0;">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Contrato</th>
+                                    <th>Proveedor</th>
+                                    <th>Valor Anual</th>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contractsTableBody">
+                                <!-- Rows inserted by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== MODAL: Add Provider ===== -->
+    <div class="modal-overlay" id="addProviderModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-building" style="color:var(--primary);"></i> Nuevo Proveedor</h3>
+                <button class="modal-close" onclick="closeModal('addProviderModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProviderForm" onsubmit="addProvider(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre del Proveedor *</label>
+                            <input type="text" id="apName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoría *</label>
+                            <select id="apCategory" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Cloud">Cloud</option>
+                                <option value="Software">Software</option>
+                                <option value="Infraestructura">Infraestructura</option>
+                                <option value="Consultoría">Consultoría</option>
+                                <option value="Seguridad">Seguridad</option>
+                                <option value="Telecomunicaciones">Telecomunicaciones</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Servicios">Servicios</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Contacto Principal</label>
+                            <input type="text" id="apContact">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Contacto</label>
+                            <input type="email" id="apEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" id="apPhone">
+                        </div>
+                        <div class="form-group">
+                            <label>Sitio Web</label>
+                            <input type="url" id="apWebsite" placeholder="https://">
+                        </div>
+                        <div class="form-group full">
+                            <label>Servicios que provee</label>
+                            <textarea id="apServices" rows="3"></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Notas</label>
+                            <textarea id="apNotes" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-form btn-form-secondary" onclick="closeModal('addProviderModal')">Cancelar</button>
+                        <button type="submit" class="btn-form btn-form-primary"><i class="fas fa-save"></i> Guardar Proveedor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL: Add Contract ===== -->
+    <div class="modal-overlay" id="addContractModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-contract" style="color:var(--primary);"></i> Nuevo Contrato</h3>
+                <button class="modal-close" onclick="closeModal('addContractModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="addContractForm" onsubmit="addContract(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre del Contrato *</label>
+                            <input type="text" id="acName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Proveedor *</label>
+                            <select id="acProvider" required>
+                                <option value="">Seleccionar proveedor...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor Anual (USD) *</label>
+                            <input type="number" id="acValue" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select id="acType">
+                                <option value="Servicio">Servicio</option>
+                                <option value="Licencia">Licencia</option>
+                                <option value="Suscripción">Suscripción</option>
+                                <option value="Consultoría">Consultoría</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                                <option value="Outsourcing">Outsourcing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Inicio *</label>
+                            <input type="date" id="acStart" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Fin *</label>
+                            <input type="date" id="acEnd" required>
+                        </div>
+                        <div class="form-group full">
+                            <label>Descripción / Alcance</label>
+                            <textarea id="acDescription" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-form btn-form-secondary" onclick="closeModal('addContractModal')">Cancelar</button>
+                        <button type="submit" class="btn-form btn-form-primary"><i class="fas fa-save"></i> Guardar Contrato</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ==========================================
+        // DATA STORE (localStorage)
+        // ==========================================
+        const STORAGE_KEY = 'nexum_vmo_data';
+
+        function getData() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) return JSON.parse(stored);
+            return { providers: [], contracts: [], nextProviderId: 1, nextContractId: 1 };
+        }
+
+        function saveData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // ==========================================
+        // INIT DATA WITH SAMPLES
+        // ==========================================
+        function initSampleData() {
+            const data = getData();
+            if (data.providers.length > 0) return; // Already has data
+
+            const sampleProviders = [
+                { id: 1, name: 'Microsoft Corp.', category: 'Cloud', contact: 'John Smith', email: 'john@microsoft.com', phone: '+1 425-882-8080', website: 'https://microsoft.com', services: 'Azure, Office 365, Dynamics 365', notes: 'Proveedor estratégico cloud', rating: 5, status: 'active', createdAt: '2024-01-15' },
+                { id: 2, name: 'Amazon Web Services', category: 'Cloud', contact: 'Sarah Johnson', email: 'sarah@aws.com', phone: '+1 206-266-1000', website: 'https://aws.com', services: 'AWS Cloud, Lambda, S3, EC2', notes: 'Infraestructura cloud principal', rating: 5, status: 'active', createdAt: '2024-01-20' },
+                { id: 3, name: 'Oracle Corporation', category: 'Software', contact: 'Mike Brown', email: 'mike@oracle.com', phone: '+1 650-506-7000', website: 'https://oracle.com', services: 'Bases de datos, ERP, Cloud', notes: 'Licencias enterprise', rating: 4, status: 'active', createdAt: '2024-02-01' },
+                { id: 4, name: 'Cisco Systems', category: 'Infraestructura', contact: 'Lisa Davis', email: 'lisa@cisco.com', phone: '+1 408-526-4000', website: 'https://cisco.com', services: 'Networking, Seguridad, Colaboración', notes: 'Infraestructura de red', rating: 4, status: 'active', createdAt: '2024-02-10' },
+                { id: 5, name: 'Salesforce Inc.', category: 'Software', contact: 'David Wilson', email: 'david@salesforce.com', phone: '+1 415-901-7000', website: 'https://salesforce.com', services: 'CRM, Marketing Cloud, Analytics', notes: 'Plataforma CRM corporativa', rating: 4, status: 'active', createdAt: '2024-03-01' },
+                { id: 6, name: 'Palo Alto Networks', category: 'Seguridad', contact: 'Emily Chen', email: 'emily@paloaltonetworks.com', phone: '+1 408-753-4000', website: 'https://paloaltonetworks.com', services: 'Firewalls, Ciberseguridad, XDR', notes: 'Seguridad perimetral', rating: 5, status: 'active', createdAt: '2024-03-15' },
+                { id: 7, name: 'Deloitte Consulting', category: 'Consultoría', contact: 'Robert Taylor', email: 'robert@deloitte.com', phone: '+1 212-489-1600', website: 'https://deloitte.com', services: 'Consultoría TI, Transformación Digital', notes: 'Consultoría estratégica', rating: 3, status: 'review', createdAt: '2024-04-01' },
+                { id: 8, name: 'AT&T Business', category: 'Telecomunicaciones', contact: 'Jennifer Lee', email: 'jennifer@att.com', phone: '+1 210-821-4105', website: 'https://att.com', services: 'Telecomunicaciones, Redes MPLS', notes: 'Conectividad corporativa', rating: 3, status: 'active', createdAt: '2024-04-10' },
+            ];
+
+            const sampleContracts = [
+                { id: 1, name: 'Azure Enterprise Agreement', providerId: 1, providerName: 'Microsoft Corp.', value: 450000, type: 'Suscripción', startDate: '2024-01-01', endDate: '2026-12-31', description: 'Acuerdo enterprise para servicios Azure y Office 365', status: 'active' },
+                { id: 2, name: 'AWS Reserved Instances', providerId: 2, providerName: 'Amazon Web Services', value: 380000, type: 'Suscripción', startDate: '2024-03-01', endDate: '2025-02-28', description: 'Instancias reservadas AWS para producción', status: 'active' },
+                { id: 3, name: 'Oracle Database License', providerId: 3, providerName: 'Oracle Corporation', value: 280000, type: 'Licencia', startDate: '2023-06-01', endDate: '2025-05-31', description: 'Licencias Oracle Database Enterprise Edition', status: 'active' },
+                { id: 4, name: 'Cisco Network Maintenance', providerId: 4, providerName: 'Cisco Systems', value: 120000, type: 'Mantenimiento', startDate: '2024-01-01', endDate: '2024-12-31', description: 'Mantenimiento anual de infraestructura de red', status: 'active' },
+                { id: 5, name: 'Salesforce Enterprise', providerId: 5, providerName: 'Salesforce Inc.', value: 200000, type: 'Suscripción', startDate: '2024-06-01', endDate: '2025-05-31', description: 'Suscripción enterprise Salesforce CRM', status: 'active' },
+                { id: 6, name: 'Palo Alto Firewall Subscription', providerId: 6, providerName: 'Palo Alto Networks', value: 95000, type: 'Servicio', startDate: '2024-04-01', endDate: '2025-03-31', description: 'Suscripción de seguridad firewalls', status: 'active' },
+                { id: 7, name: 'Deloitte Digital Transformation', providerId: 7, providerName: 'Deloitte Consulting', value: 350000, type: 'Consultoría', startDate: '2024-02-01', endDate: '2024-08-31', description: 'Consultoría para transformación digital', status: 'active' },
+                { id: 8, name: 'AT&T MPLS Contract', providerId: 8, providerName: 'AT&T Business', value: 180000, type: 'Servicio', startDate: '2023-01-01', endDate: '2025-12-31', description: 'Servicio MPLS para 15 sedes corporativas', status: 'active' },
+            ];
+
+            data.providers = sampleProviders;
+            data.contracts = sampleContracts;
+            data.nextProviderId = 9;
+            data.nextContractId = 9;
+            saveData(data);
+        }
+
+        // ==========================================
+        // RENDER FUNCTIONS
+        // ==========================================
+        function renderDashboard() {
+            const data = getData();
+            
+            // Stats
+            const activeProviders = data.providers.filter(p => p.status === 'active').length;
+            const activeContracts = data.contracts.filter(c => c.status === 'active').length;
+            const today = new Date();
+            const thirtyDays = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+            const pendingRenewals = data.contracts.filter(c => {
+                const endDate = new Date(c.endDate);
+                return endDate >= today && endDate <= thirtyDays;
+            }).length;
+            const annualSpend = data.contracts.reduce((sum, c) => sum + c.value, 0);
+
+            document.getElementById('totalProviders').textContent = activeProviders;
+            document.getElementById('totalContracts').textContent = activeContracts;
+            document.getElementById('pendingRenewals').textContent = pendingRenewals;
+            document.getElementById('annualSpend').textContent = '$' + annualSpend.toLocaleString('en-US');
+
+            // Provider count badge
+            document.getElementById('providerCount').textContent = data.providers.length + ' registrados';
+            document.getElementById('contractCount').textContent = data.contracts.length + ' registrados';
+
+            // Providers table
+            renderProvidersTable(data);
+            
+            // Top providers
+            renderTopProviders(data);
+            
+            // Contract timeline
+            renderContractTimeline(data);
+            
+            // Contracts table
+            renderContractsTable(data);
+            
+            // Update provider select in contract modal
+            updateProviderSelect(data);
+        }
+
+        function renderProvidersTable(data) {
+            const tbody = document.getElementById('providersTableBody');
+            tbody.innerHTML = '';
+            
+            data.providers.forEach(p => {
+                const stars = '★'.repeat(p.rating) + '<span class="empty">' + '★'.repeat(5 - p.rating) + '</span>';
+                const statusClass = p.status === 'active' ? 'active' : p.status === 'review' ? 'review' : 'inactive';
+                const statusText = p.status === 'active' ? 'Activo' : p.status === 'review' ? 'En Revisión' : 'Inactivo';
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${p.name}</strong></td>
+                    <td>${p.category}</td>
+                    <td><span class="rating">${stars}</span></td>
+                    <td><span class="status ${statusClass}">${statusText}</span></td>
+                    <td>
+                        <button class="action-btn" onclick="viewProvider(${p.id})" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn" onclick="deleteProvider(${p.id})" title="Eliminar" style="color:var(--danger);"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderTopProviders(data) {
+            const container = document.getElementById('topProvidersList');
+            container.innerHTML = '';
+            
+            const sorted = [...data.providers].sort((a, b) => b.rating - a.rating).slice(0, 5);
+            
+            sorted.forEach((p, index) => {
+                const colors = ['#2563eb', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+                const div = document.createElement('div');
+                div.className = 'provider-item';
+                div.innerHTML = `
+                    <div class="provider-avatar" style="background:${colors[index]}">${p.name.charAt(0)}</div>
+                    <div class="provider-info">
+                        <h4>${p.name}</h4>
+                        <p>${p.category} • ${p.services ? p.services.substring(0, 40) + '...' : ''}</p>
+                    </div>
+                    <div class="provider-value">
+                        <span class="rating">${'★'.repeat(p.rating)}<span class="empty">${'★'.repeat(5 - p.rating)}</span></span>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderContractTimeline(data) {
+            const timeline = document.getElementById('contractTimeline');
+            timeline.innerHTML = '';
+            
+            const today = new Date();
+            const sixtyDays = new Date(today.getTime() + 60 * 24 * 60 * 60 * 1000);
+            
+            const upcoming = data.contracts
+                .filter(c => {
+                    const endDate = new Date(c.endDate);
+                    return endDate >= today && endDate <= sixtyDays;
+                })
+                .sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+            
+            if (upcoming.length === 0) {
+                timeline.innerHTML = '<p style="color:var(--text-secondary);font-size:0.88rem;text-align:center;padding:20px 0;">No hay vencimientos próximos en los próximos 60 días.</p>';
+                return;
+            }
+            
+            upcoming.forEach(c => {
+                const endDate = new Date(c.endDate);
+                const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
+                let itemClass = 'timeline-item';
+                let label = 'Vence en ' + daysLeft + ' días';
+                
+                if (daysLeft <= 15) { itemClass += ' expired'; label = '⚠️ VENCE PRONTO'; }
+                else if (daysLeft <= 30) { itemClass += ' expiring'; label = 'Próximo a vencer'; }
+                else { itemClass += ' renewal'; label = 'Renovación programada'; }
+                
+                const div = document.createElement('div');
+                div.className = itemClass;
+                div.innerHTML = `
+                    <div class="timeline-date">${label} • ${formatDate(c.endDate)}</div>
+                    <div class="timeline-title">${c.name}</div>
+                    <div class="timeline-desc">${c.providerName} • $${c.value.toLocaleString('en-US')}/año</div>
+                `;
+                timeline.appendChild(div);
+            });
+        }
+
+        function renderContractsTable(data) {
+            const tbody = document.getElementById('contractsTableBody');
+            tbody.innerHTML = '';
+            
+            data.contracts.forEach(c => {
+                const today = new Date();
+                const endDate = new Date(c.endDate);
+                let statusClass = 'active';
+                let statusText = 'Vigente';
+                
+                if (endDate < today) { statusClass = 'inactive'; statusText = 'Vencido'; }
+                else {
+                    const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
+                    if (daysLeft <= 30) { statusClass = 'pending'; statusText = 'Por vencer (' + daysLeft + 'd)'; }
+                }
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${c.name}</strong></td>
+                    <td>${c.providerName}</td>
+                    <td>$${c.value.toLocaleString('en-US')}</td>
+                    <td>${formatDate(c.startDate)}</td>
+                    <td>${formatDate(c.endDate)}</td>
+                    <td><span class="status ${statusClass}">${statusText}</span></td>
+                    <td>
+                        <button class="action-btn" onclick="deleteContract(${c.id})" title="Eliminar" style="color:var(--danger);"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateProviderSelect(data) {
+            const select = document.getElementById('acProvider');
+            select.innerHTML = '<option value="">Seleccionar proveedor...</option>';
+            data.providers.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p.id;
+                option.textContent = p.name;
+                select.appendChild(option);
+            });
+        }
+
+        // ==========================================
+        // CRUD OPERATIONS
+        // ==========================================
+        function quickAddProvider(e) {
+            e.preventDefault();
+            const data = getData();
+            
+            const provider = {
+                id: data.nextProviderId++,
+                name: document.getElementById('qpName').value.trim(),
+                category: document.getElementById('qpCategory').value,
+                contact: document.getElementById('qpContact').value.trim(),
+                email: document.getElementById('qpEmail').value.trim(),
+                phone: '',
+                website: '',
+                services: document.getElementById('qpServices').value.trim(),
+                notes: '',
+                rating: 3,
+                status: 'active',
+                createdAt: new Date().toISOString().split('T')[0]
+            };
+            
+            data.providers.push(provider);
+            saveData(data);
+            renderDashboard();
+            document.getElementById('quickProviderForm').reset();
+            showToast('Proveedor registrado exitosamente', 'success');
+        }
+
+        function addProvider(e) {
+            e.preventDefault();
+            const data = getData();
+            
+            const provider = {
+                id: data.nextProviderId++,
+                name: document.getElementById('apName').value.trim(),
+                category: document.getElementById('apCategory').value,
+                contact: document.getElementById('apContact').value.trim(),
+                email: document.getElementById('apEmail').value.trim(),
+                phone: document.getElementById('apPhone').value.trim(),
+                website: document.getElementById('apWebsite').value.trim(),
+                services: document.getElementById('apServices').value.trim(),
+                notes: document.getElementById('apNotes').value.trim(),
+                rating: 3,
+                status: 'active',
+                createdAt: new Date().toISOString().split('T')[0]
+            };
+            
+            data.providers.push(provider);
+            saveData(data);
+            renderDashboard();
+            closeModal('addProviderModal');
+            document.getElementById('addProviderForm').reset();
+            showToast('Proveedor registrado exitosamente', 'success');
+        }
+
+        function addContract(e) {
+            e.preventDefault();
+            const data = getData();
+            
+            const providerId = parseInt(document.getElementById('acProvider').value);
+            const provider = data.providers.find(p => p.id === providerId);
+            
+            const contract = {
+                id: data.nextContractId++,
+                name: document.getElementById('acName').value.trim(),
+                providerId: providerId,
+                providerName: provider ? provider.name : 'Desconocido',
+                value: parseFloat(document.getElementById('acValue').value),
+                type: document.getElementById('acType').value,
+                startDate: document.getElementById('acStart').value,
+                endDate: document.getElementById('acEnd').value,
+                description: document.getElementById('acDescription').value.trim(),
+                status: 'active'
+            };
+            
+            data.contracts.push(contract);
+            saveData(data);
+            renderDashboard();
+            closeModal('addContractModal');
+            document.getElementById('addContractForm').reset();
+            showToast('Contrato registrado exitosamente', 'success');
+        }
+
+        function deleteProvider(id) {
+            if (!confirm('¿Está seguro de eliminar este proveedor?')) return;
+            const data = getData();
+            data.providers = data.providers.filter(p => p.id !== id);
+            // Also remove related contracts
+            data.contracts = data.contracts.filter(c => c.providerId !== id);
+            saveData(data);
+            renderDashboard();
+            showToast('Proveedor eliminado', 'info');
+        }
+
+        function deleteContract(id) {
+            if (!confirm('¿Está seguro de eliminar este contrato?')) return;
+            const data = getData();
+            data.contracts = data.contracts.filter(c => c.id !== id);
+            saveData(data);
+            renderDashboard();
+            showToast('Contrato eliminado', 'info');
+        }
+
+        function viewProvider(id) {
+            const data = getData();
+            const provider = data.providers.find(p => p.id === id);
+            if (!provider) return;
+            
+            const providerContracts = data.contracts.filter(c => c.providerId === id);
+            const totalValue = providerContracts.reduce((sum, c) => sum + c.value, 0);
+            
+            alert(
+                `📋 ${provider.name}\n` +
+                `━━━━━━━━━━━━━━━━━━\n` +
+                `Categoría: ${provider.category}\n` +
+                `Contacto: ${provider.contact || 'N/A'}\n` +
+                `Email: ${provider.email || 'N/A'}\n` +
+                `Teléfono: ${provider.phone || 'N/A'}\n` +
+                `Web: ${provider.website || 'N/A'}\n` +
+                `Rating: ${'★'.repeat(provider.rating)}${'☆'.repeat(5 - provider.rating)}\n` +
+                `Estado: ${provider.status === 'active' ? 'Activo' : provider.status === 'review' ? 'En Revisión' : 'Inactivo'}\n` +
+                `━━━━━━━━━━━━━━━━━━\n` +
+                `Servicios: ${provider.services || 'No especificados'}\n` +
+                `Contratos activos: ${providerContracts.length}\n` +
+                `Valor total contratos: $${totalValue.toLocaleString('en-US')}\n` +
+                `Notas: ${provider.notes || 'Sin notas'}`
+            );
+        }
+
+        // ==========================================
+        // MODAL FUNCTIONS
+        // ==========================================
+        function openAddProviderModal() {
+            document.getElementById('addProviderModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openAddContractModal() {
+            const data = getData();
+            updateProviderSelect(data);
+            document.getElementById('addContractModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+
+        // ==========================================
+        // TOAST NOTIFICATIONS
+        // ==========================================
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+            toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        // ==========================================
+        // INIT
+        // ==========================================
+        initSampleData();
+        renderDashboard();
+        console.log('🚀 Nexum VMO - Dashboard initialized');
+    </script>
+
+</body>
