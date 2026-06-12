@@ -244,23 +244,71 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentYear = new Date().getFullYear();
         const brochureContent = `
             <!DOCTYPE html>
-            <html>
+            <html lang="es">
             <head>
                 <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Nexum Solutions - Brochure Corporativo</title>
                 <style>
-                    @page { margin: 20mm 15mm; }
+                    /* CSS Variables - Light Mode */
+                    :root {
+                        --primary: #2563eb;
+                        --primary-dark: #1d4ed8;
+                        --accent: #06b6d4;
+                        --gradient-1: linear-gradient(135deg, #2563eb, #06b6d4);
+                        --gradient-2: linear-gradient(135deg, #1e3a5f, #2563eb);
+                        --text-primary: #1e293b;
+                        --text-secondary: #475569;
+                        --text-light: #94a3b8;
+                        --bg-white: #ffffff;
+                        --bg-light: #f8f9fc;
+                        --bg-dark: #0f172a;
+                        --border: #e2e8f0;
+                        --card-bg: #f8f9fc;
+                        --card-border: #e2e8f0;
+                        --ia-bg: #f0f4ff;
+                        --footer-border: #e2e8f0;
+                    }
+
+                    /* Dark Mode */
+                    @media (prefers-color-scheme: dark) {
+                        :root {
+                            --primary: #3b82f6;
+                            --accent: #22d3ee;
+                            --gradient-1: linear-gradient(135deg, #3b82f6, #22d3ee);
+                            --gradient-2: linear-gradient(135deg, #1e293b, #3b82f6);
+                            --text-primary: #f1f5f9;
+                            --text-secondary: #94a3b8;
+                            --text-light: #64748b;
+                            --bg-white: #0f172a;
+                            --bg-light: #1e293b;
+                            --bg-dark: #020617;
+                            --border: #334155;
+                            --card-bg: #1e293b;
+                            --card-border: #334155;
+                            --ia-bg: rgba(59, 130, 246, 0.12);
+                            --footer-border: #334155;
+                        }
+                    }
+
+                    @page { margin: 15mm 12mm; }
+                    
                     * { margin: 0; padding: 0; box-sizing: border-box; }
+                    
                     body { 
-                        font-family: 'Segoe UI', Arial, sans-serif; 
-                        color: #1e293b; 
+                        font-family: 'Segoe UI', -apple-system, Arial, sans-serif; 
+                        color: var(--text-primary); 
+                        background: var(--bg-white);
                         line-height: 1.6;
                         padding: 0;
+                        transition: none;
                     }
+
+                    /* Cover */
                     .cover {
-                        background: linear-gradient(135deg, #0f172a, #1e3a5f);
+                        background: var(--gradient-2);
                         color: white;
-                        padding: 60px 40px;
+                        padding: 50px 36px;
                         text-align: center;
                         page-break-after: always;
                         display: flex;
@@ -268,50 +316,150 @@ document.addEventListener('DOMContentLoaded', () => {
                         justify-content: center;
                         min-height: 90vh;
                     }
-                    .cover h1 { font-size: 42px; margin-bottom: 10px; }
-                    .cover h1 span { color: #06b6d4; }
-                    .cover .tagline { font-size: 18px; opacity: 0.8; margin-bottom: 16px; }
-                    .cover .pitch { font-size: 15px; opacity: 0.75; max-width: 650px; margin: 0 auto 30px; line-height: 1.8; font-style: italic; }
-                    .cover .subtitle { font-size: 16px; opacity: 0.7; max-width: 600px; margin: 0 auto; line-height: 1.8; }
-                    .cover .date { margin-top: 40px; font-size: 14px; opacity: 0.5; }
-                    .section { padding: 30px 40px; page-break-inside: avoid; }
+                    .cover h1 { font-size: 38px; margin-bottom: 8px; }
+                    .cover h1 span { color: var(--accent); }
+                    .cover .tagline { font-size: 17px; opacity: 0.85; margin-bottom: 14px; }
+                    .cover .pitch { font-size: 14px; opacity: 0.75; max-width: 600px; margin: 0 auto 24px; line-height: 1.7; font-style: italic; }
+                    .cover .subtitle { font-size: 15px; opacity: 0.7; max-width: 550px; margin: 0 auto; line-height: 1.7; }
+                    .cover .date { margin-top: 36px; font-size: 13px; opacity: 0.5; }
+
+                    /* Sections */
+                    .section { padding: 28px 32px; page-break-inside: avoid; }
+                    
                     .section h2 { 
-                        font-size: 24px; 
-                        color: #2563eb; 
-                        border-bottom: 3px solid #2563eb; 
-                        padding-bottom: 8px; 
-                        margin-bottom: 16px; 
+                        font-size: 22px; 
+                        color: var(--primary); 
+                        border-bottom: 3px solid var(--primary); 
+                        padding-bottom: 6px; 
+                        margin-bottom: 14px; 
                     }
+                    
                     .section h3.cat-title {
-                        font-size: 16px;
-                        color: #0f172a;
-                        margin: 20px 0 10px;
-                        padding-left: 12px;
-                        border-left: 3px solid #2563eb;
+                        font-size: 15px;
+                        color: var(--text-primary);
+                        margin: 18px 0 8px;
+                        padding-left: 10px;
+                        border-left: 3px solid var(--primary);
+                        font-weight: 700;
                     }
-                    .section p { margin-bottom: 12px; color: #475569; font-size: 13px; }
-                    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+                    
+                    .section p { 
+                        margin-bottom: 10px; 
+                        color: var(--text-secondary); 
+                        font-size: 12.5px; 
+                    }
+
+                    .section .intro-text {
+                        font-size: 13px;
+                        margin-bottom: 14px;
+                        line-height: 1.7;
+                    }
+
+                    /* Services Grid */
+                    .services-grid { 
+                        display: grid; 
+                        grid-template-columns: 1fr 1fr; 
+                        gap: 10px; 
+                        margin-top: 10px; 
+                    }
+                    
                     .service-item { 
-                        background: #f8f9fc; 
-                        padding: 14px; 
+                        background: var(--card-bg); 
+                        padding: 12px 14px; 
                         border-radius: 8px; 
-                        border-left: 4px solid #2563eb; 
+                        border-left: 4px solid var(--primary); 
+                        border: 1px solid var(--card-border);
+                        border-left-width: 4px;
                     }
-                    .service-item h3 { font-size: 13px; color: #0f172a; margin-bottom: 4px; }
-                    .service-item p { font-size: 11px; color: #64748b; margin: 0; }
-                    .ia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-                    .ia-item { background: #f0f4ff; padding: 12px; border-radius: 8px; }
-                    .ia-item h3 { font-size: 12px; color: #2563eb; margin-bottom: 4px; }
-                    .ia-item p { font-size: 11px; color: #64748b; margin: 0; }
-                    .contact-info { margin-top: 16px; }
-                    .contact-info p { margin-bottom: 6px; font-size: 14px; }
+                    .service-item h3 { 
+                        font-size: 12.5px; 
+                        color: var(--text-primary); 
+                        margin-bottom: 3px; 
+                        font-weight: 700;
+                    }
+                    .service-item p { 
+                        font-size: 11px; 
+                        color: var(--text-secondary); 
+                        margin: 0; 
+                        line-height: 1.5;
+                    }
+
+                    /* IA Grid */
+                    .ia-grid { 
+                        display: grid; 
+                        grid-template-columns: 1fr 1fr; 
+                        gap: 10px; 
+                        margin-top: 10px; 
+                    }
+                    .ia-item { 
+                        background: var(--ia-bg); 
+                        padding: 12px; 
+                        border-radius: 8px; 
+                        border: 1px solid var(--card-border);
+                    }
+                    .ia-item h3 { 
+                        font-size: 12px; 
+                        color: var(--primary); 
+                        margin-bottom: 3px; 
+                        font-weight: 700;
+                    }
+                    .ia-item p { 
+                        font-size: 10.5px; 
+                        color: var(--text-secondary); 
+                        margin: 0; 
+                        line-height: 1.5;
+                    }
+
+                    /* Footer */
                     .footer-text { 
                         text-align: center; 
-                        padding: 20px; 
-                        font-size: 12px; 
-                        color: #94a3b8; 
-                        border-top: 1px solid #e2e8f0; 
-                        margin-top: 30px; 
+                        padding: 18px; 
+                        font-size: 11px; 
+                        color: var(--text-light); 
+                        border-top: 1px solid var(--footer-border); 
+                        margin-top: 24px; 
+                    }
+
+                    .quote-text {
+                        margin-top: 20px;
+                        font-style: italic;
+                        color: var(--text-secondary);
+                        font-size: 13px;
+                        text-align: center;
+                        padding: 16px 0;
+                        border-top: 1px solid var(--footer-border);
+                    }
+
+                    /* Responsive for small screens */
+                    @media (max-width: 600px) {
+                        .cover { padding: 36px 24px; min-height: auto; }
+                        .cover h1 { font-size: 28px; }
+                        .cover .pitch { font-size: 12px; }
+                        .cover .subtitle { font-size: 13px; }
+                        .section { padding: 20px 18px; }
+                        .section h2 { font-size: 18px; }
+                        .services-grid { grid-template-columns: 1fr; }
+                        .ia-grid { grid-template-columns: 1fr; }
+                        .service-item h3 { font-size: 12px; }
+                        .service-item p { font-size: 10.5px; }
+                    }
+
+                    @media (max-width: 400px) {
+                        .cover { padding: 24px 16px; }
+                        .cover h1 { font-size: 22px; }
+                        .section { padding: 16px 12px; }
+                        .section h2 { font-size: 16px; }
+                        .section h3.cat-title { font-size: 13px; }
+                        .service-item { padding: 10px; }
+                        .ia-item { padding: 10px; }
+                    }
+
+                    /* Print-specific */
+                    @media print {
+                        body { background: white; }
+                        .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        .service-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        .ia-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
                     }
                 </style>
             </head>
@@ -326,8 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="section">
                     <h2>Nuestros Servicios</h2>
+                    <p class="intro-text">Agrupamos nuestros servicios bajo los desafíos que resolvemos para impulsar su transformación digital.</p>
                     
                     <h3 class="cat-title">I. Estrategia y Gobierno — La Fundación</h3>
+                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Aseguramos que la tecnología sea el motor del negocio, no un gasto operativo.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Consultoría TI Estratégica</h3>
@@ -339,19 +489,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="service-item">
                             <h3>Gestión Estratégica VMO</h3>
-                            <p>Optimización del valor del ecosistema de proveedores.</p>
+                            <p>Optimización del valor del ecosistema de proveedores mediante diseño estratégico.</p>
                         </div>
                         <div class="service-item">
                             <h3>GRC Avanzado</h3>
-                            <p>Evaluación de riesgos, continuidad operativa (BIA/BCP/DRP) y resiliencia.</p>
+                            <p>Evaluación de riesgos, continuidad operativa (BIA/BCP/DRP) y resiliencia empresarial.</p>
                         </div>
                     </div>
 
                     <h3 class="cat-title">II. Eficiencia Operativa — El Motor</h3>
+                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Maximizamos el rendimiento de sus activos mediante metodologías probadas.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Gestión ITSM & ITIL</h3>
-                            <p>Estandarización y eficiencia en servicios TI basados en ITIL.</p>
+                            <p>Estandarización y eficiencia en servicios TI basados en las mejores prácticas ITIL.</p>
                         </div>
                         <div class="service-item">
                             <h3>Gestión de SLA/SLO</h3>
@@ -359,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="service-item">
                             <h3>Gestión y Análisis SAM</h3>
-                            <p>Control, optimización y transparencia en activos de software.</p>
+                            <p>Control, optimización y transparencia en activos de software para reducir costos.</p>
                         </div>
                         <div class="service-item">
                             <h3>Sourcing Estratégico (RFXs)</h3>
@@ -371,68 +522,69 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="service-item">
                             <h3>Operational Model & Transition</h3>
-                            <p>Diseño y aceleración de capacidades competitivas.</p>
+                            <p>Diseño y aceleración de capacidades competitivas. Gestión de transiciones sin disrupción.</p>
                         </div>
                     </div>
 
                     <h3 class="cat-title">III. Innovación y Capa Agéntica — La Evolución</h3>
+                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Construimos el mañana con soluciones inteligentes diseñadas para escalar.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Desarrollo de Capa Agéntica</h3>
-                            <p>Sistemas autónomos para automatización de procesos complejos.</p>
+                            <p>Sistemas autónomos e inteligentes para automatización de procesos complejos.</p>
                         </div>
                         <div class="service-item">
                             <h3>IA Operacional Automatizada</h3>
-                            <p>Software a medida para ejecución inteligente sin fricción.</p>
+                            <p>Software a medida para ejecución inteligente sin fricción de procesos críticos.</p>
                         </div>
                         <div class="service-item">
                             <h3>Desarrollo de Productos & Web</h3>
-                            <p>Soluciones digitales escalables centradas en UX.</p>
+                            <p>Soluciones digitales escalables centradas en experiencia de usuario.</p>
                         </div>
                         <div class="service-item">
                             <h3>Change Management</h3>
-                            <p>Estrategias de adopción para evolucionar con la tecnología.</p>
+                            <p>Estrategias de adopción para evolucionar con la tecnología de manera efectiva.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
                     <h2>Casos de Uso de IA Agéntica</h2>
-                    <p>Nuestra mayor ventaja competitiva. Sistemas autónomos que aprenden, deciden y ejecutan.</p>
+                    <p class="intro-text">Nuestra mayor ventaja competitiva. Sistemas autónomos que aprenden, deciden y ejecutan para transformar su operación.</p>
                     <div class="ia-grid">
                         <div class="ia-item">
                             <h3>🤖 Soporte TI Autónomo</h3>
-                            <p>Agentes que diagnostican y resuelven incidencias en tiempo real (-70% respuesta).</p>
+                            <p>Agentes que diagnostican y resuelven incidencias en tiempo real, reduciendo tiempos de respuesta en un 70%.</p>
                         </div>
                         <div class="ia-item">
                             <h3>📋 Compliance y Auditoría</h3>
-                            <p>Monitoreo continuo de cumplimiento normativo con reportes automatizados.</p>
+                            <p>Monitoreo continuo de cumplimiento normativo con reportes automatizados y detección de desviaciones.</p>
                         </div>
                         <div class="ia-item">
                             <h3>📊 Optimización SAM</h3>
-                            <p>Análisis de uso de software y optimización autónoma de licencias.</p>
+                            <p>Análisis de uso de software, identificación de licencias infrautilizadas y optimización autónoma.</p>
                         </div>
                         <div class="ia-item">
                             <h3>🔗 Gestión VMO</h3>
-                            <p>Evaluación y negociación autónoma con proveedores.</p>
+                            <p>Evaluación de rendimiento de proveedores, negociación y gestión contractual basada en datos.</p>
                         </div>
                         <div class="ia-item">
                             <h3>⚙️ Automatización Operacional</h3>
-                            <p>Orquestación de flujos de trabajo complejos sin intervención manual.</p>
+                            <p>Orquestación de flujos de trabajo complejos integrando sistemas legacy con nuevas tecnologías.</p>
                         </div>
                         <div class="ia-item">
                             <h3>🛡️ Resiliencia y Continuidad</h3>
-                            <p>Ejecución automática de protocolos BCP/DRP ante incidentes.</p>
+                            <p>Ejecución automática de protocolos BCP/DRP ante incidentes y coordinación de recuperación.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
                     <h2>Contacto</h2>
-                    <p style="margin-bottom: 16px;">Para más información sobre nuestros servicios y soluciones, lo invitamos a visitar nuestro sitio web y completar el formulario de contacto.</p>
-                    <p style="margin-top: 20px; font-style: italic; color: #64748b;">
+                    <p class="intro-text">Para más información sobre nuestros servicios y soluciones, lo invitamos a visitar nuestro sitio web y completar el formulario de contacto. Estamos listos para escuchar sus necesidades y ofrecerle la solución que su empresa merece.</p>
+                    <div class="quote-text">
                         "Conectando la estrategia con el futuro digital."
-                    </p>
+                    </div>
                     <div class="footer-text">
                         <p>© ${currentYear} Nexum Solutions. Todos los derechos reservados.</p>
                         <p>Conectando la Estrategia con el Futuro Digital</p>
@@ -443,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         // Open in new window for printing/PDF
-        const printWindow = window.open('', '_blank', 'width=800,height=600');
+        const printWindow = window.open('', '_blank', 'width=900,height=700');
         printWindow.document.write(brochureContent);
         printWindow.document.close();
         printWindow.focus();
@@ -451,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Trigger print dialog after a short delay to let content render
         setTimeout(() => {
             printWindow.print();
-        }, 500);
+        }, 600);
     }
 
     // Attach download handlers to all download buttons
