@@ -2,7 +2,7 @@
    NEXUM SOLUTIONS - Professional Styles
    ============================================ */
 
-/* --- CSS Variables --- */
+/* --- CSS Variables (Light Mode - Default) --- */
 :root {
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
@@ -31,6 +31,152 @@
     --radius-xl: 28px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --navbar-bg-scrolled: rgba(255,255,255,0.95);
+    --navbar-shadow: 0 1px 20px rgba(0,0,0,0.08);
+    --hero-wave-fill: #f8f9fc;
+    --form-bg: #ffffff;
+    --form-border: #e2e8f0;
+    --input-bg: #ffffff;
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    --newsletter-bg: rgba(255,255,255,0.06);
+    --newsletter-border: rgba(255,255,255,0.1);
+    --newsletter-text: white;
+    --newsletter-placeholder: rgba(255,255,255,0.4);
+}
+
+/* --- Dark Mode via prefers-color-scheme --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --primary-light: #60a5fa;
+        --primary-bg: rgba(59, 130, 246, 0.12);
+        --secondary: #f1f5f9;
+        --accent: #22d3ee;
+        --accent-dark: #06b6d4;
+        --gradient-1: linear-gradient(135deg, #3b82f6, #22d3ee);
+        --gradient-2: linear-gradient(135deg, #1e293b, #3b82f6);
+        --gradient-hero: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-light: #64748b;
+        --bg-white: #0f172a;
+        --bg-light: #1e293b;
+        --bg-dark: #020617;
+        --border: #334155;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+        --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+        --shadow-xl: 0 20px 60px rgba(0,0,0,0.6);
+        --navbar-bg-scrolled: rgba(15,23,42,0.95);
+        --navbar-shadow: 0 1px 20px rgba(0,0,0,0.3);
+        --hero-wave-fill: #1e293b;
+        --form-bg: #1e293b;
+        --form-border: #334155;
+        --input-bg: #1e293b;
+        --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        --newsletter-bg: rgba(255,255,255,0.06);
+        --newsletter-border: rgba(255,255,255,0.1);
+        --newsletter-text: white;
+        --newsletter-placeholder: rgba(255,255,255,0.4);
+    }
+
+    .hero-wave svg path { fill: #1e293b !important; }
+
+    .servicio-card, .met-item, .contact-item, .contacto-form {
+        background: var(--bg-white);
+    }
+
+    .stat-item {
+        background: rgba(255,255,255,0.04);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: var(--input-bg);
+        color: var(--text-primary);
+        border-color: var(--form-border);
+    }
+
+    .form-group select {
+        background-image: var(--select-arrow);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .navbar.scrolled {
+        background: var(--navbar-bg-scrolled);
+        box-shadow: var(--navbar-shadow);
+    }
+
+    .navbar.scrolled .logo-text { color: var(--text-primary); }
+
+    .nav-menu.active {
+        background: var(--bg-white);
+    }
+
+    .nav-menu.active .nav-link {
+        color: var(--text-secondary);
+    }
+
+    .nav-menu.active .nav-link:hover,
+    .nav-menu.active .nav-link.active {
+        color: var(--primary);
+    }
+
+    .navbar.scrolled .nav-toggle span {
+        background: var(--text-primary);
+    }
+
+    .met-number {
+        color: rgba(59, 130, 246, 0.1);
+    }
+
+    .categoria-header h3,
+    .servicio-card h3,
+    .met-item h3,
+    .section-title {
+        color: var(--secondary);
+    }
+
+    .servicio-card p,
+    .met-item p,
+    .section-desc,
+    .categoria-desc,
+    .nosotros-content p,
+    .stat-label {
+        color: var(--text-secondary);
+    }
+
+    .trust-bar {
+        background: var(--bg-light);
+        border-color: var(--border);
+    }
+
+    .trust-text {
+        color: var(--text-secondary);
+    }
+
+    .contacto-form {
+        background: var(--form-bg);
+        border-color: var(--form-border);
+    }
+
+    .newsletter-form input {
+        background: var(--newsletter-bg);
+        border-color: var(--newsletter-border);
+        color: var(--newsletter-text);
+    }
+
+    .newsletter-form input::placeholder {
+        color: var(--newsletter-placeholder);
+    }
 }
 
 /* --- Reset & Base --- */
@@ -52,6 +198,7 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -175,10 +322,10 @@ img { max-width: 100%; display: block; }
 }
 
 .navbar.scrolled {
-    background: rgba(255,255,255,0.95);
+    background: var(--navbar-bg-scrolled);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+    box-shadow: var(--navbar-shadow);
     padding: 10px 0;
 }
 
@@ -437,6 +584,11 @@ img { max-width: 100%; display: block; }
     height: 80px;
 }
 
+.hero-wave svg path {
+    fill: var(--hero-wave-fill);
+    transition: fill 0.3s ease;
+}
+
 /* ============================================
    TRUST BAR
    ============================================ */
@@ -445,6 +597,7 @@ img { max-width: 100%; display: block; }
     padding: 24px 0;
     text-align: center;
     border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .trust-text {
@@ -460,6 +613,7 @@ img { max-width: 100%; display: block; }
 .servicios {
     padding: 100px 0;
     background: var(--bg-white);
+    transition: background 0.3s ease;
 }
 
 .servicios-grid {
@@ -753,6 +907,7 @@ img { max-width: 100%; display: block; }
 .metodologia {
     padding: 100px 0;
     background: var(--bg-light);
+    transition: background 0.3s ease;
 }
 
 .metodologia-grid {
@@ -818,6 +973,7 @@ img { max-width: 100%; display: block; }
 .nosotros {
     padding: 100px 0;
     background: var(--bg-white);
+    transition: background 0.3s ease;
 }
 
 .nosotros-grid {
@@ -851,6 +1007,7 @@ img { max-width: 100%; display: block; }
     background: var(--bg-light);
     border-radius: var(--radius-md);
     position: relative;
+    transition: background 0.3s ease;
 }
 
 .stat-number {
@@ -969,6 +1126,7 @@ img { max-width: 100%; display: block; }
 .contacto {
     padding: 100px 0;
     background: var(--bg-light);
+    transition: background 0.3s ease;
 }
 
 .contacto-grid {
@@ -1039,11 +1197,12 @@ img { max-width: 100%; display: block; }
 
 /* Contact Form */
 .contacto-form {
-    background: var(--bg-white);
+    background: var(--form-bg);
     padding: 40px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
+    border: 1px solid var(--form-border);
     box-shadow: var(--shadow-md);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .form-row {
@@ -1061,12 +1220,12 @@ img { max-width: 100%; display: block; }
 .form-group textarea {
     width: 100%;
     padding: 14px 18px;
-    border: 1.5px solid var(--border);
+    border: 1.5px solid var(--form-border);
     border-radius: var(--radius-sm);
     font-family: var(--font);
     font-size: 0.95rem;
     color: var(--text-primary);
-    background: var(--bg-white);
+    background: var(--input-bg);
     transition: var(--transition);
     outline: none;
 }
@@ -1085,7 +1244,7 @@ img { max-width: 100%; display: block; }
 
 .form-group select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-image: var(--select-arrow);
     background-repeat: no-repeat;
     background-position: right 16px center;
     cursor: pointer;
@@ -1182,22 +1341,22 @@ img { max-width: 100%; display: block; }
     gap: 0;
     border-radius: var(--radius-sm);
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--newsletter-border);
 }
 
 .newsletter-form input {
     flex: 1;
     padding: 12px 16px;
     border: none;
-    background: rgba(255,255,255,0.06);
-    color: white;
+    background: var(--newsletter-bg);
+    color: var(--newsletter-text);
     font-family: var(--font);
     font-size: 0.9rem;
     outline: none;
 }
 
 .newsletter-form input::placeholder {
-    color: rgba(255,255,255,0.4);
+    color: var(--newsletter-placeholder);
 }
 
 .newsletter-form button {
