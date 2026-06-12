@@ -250,220 +250,245 @@ document.addEventListener('DOMContentLoaded', () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Nexum Solutions - Brochure Corporativo</title>
                 <style>
-                    /* CSS Variables - Light Mode */
+                    /* ===== UNIFIED DARK THEME - All sections same background ===== */
                     :root {
-                        --primary: #2563eb;
-                        --primary-dark: #1d4ed8;
-                        --accent: #06b6d4;
-                        --gradient-1: linear-gradient(135deg, #2563eb, #06b6d4);
-                        --gradient-2: linear-gradient(135deg, #1e3a5f, #2563eb);
-                        --text-primary: #1e293b;
-                        --text-secondary: #475569;
-                        --text-light: #94a3b8;
-                        --bg-white: #ffffff;
-                        --bg-light: #f8f9fc;
-                        --bg-dark: #0f172a;
-                        --border: #e2e8f0;
-                        --card-bg: #f8f9fc;
-                        --card-border: #e2e8f0;
-                        --ia-bg: #f0f4ff;
-                        --footer-border: #e2e8f0;
+                        --primary: #3b82f6;
+                        --primary-dark: #2563eb;
+                        --accent: #22d3ee;
+                        --gradient-1: linear-gradient(135deg, #3b82f6, #22d3ee);
+                        --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+                        --text-white: #ffffff;
+                        --text-muted: rgba(255,255,255,0.7);
+                        --text-dim: rgba(255,255,255,0.5);
+                        --card-bg: rgba(255,255,255,0.06);
+                        --card-border: rgba(255,255,255,0.1);
+                        --card-hover: rgba(255,255,255,0.1);
+                        --divider: rgba(255,255,255,0.08);
                     }
 
-                    /* Dark Mode */
-                    @media (prefers-color-scheme: dark) {
-                        :root {
-                            --primary: #3b82f6;
-                            --accent: #22d3ee;
-                            --gradient-1: linear-gradient(135deg, #3b82f6, #22d3ee);
-                            --gradient-2: linear-gradient(135deg, #1e293b, #3b82f6);
-                            --text-primary: #f1f5f9;
-                            --text-secondary: #94a3b8;
-                            --text-light: #64748b;
-                            --bg-white: #0f172a;
-                            --bg-light: #1e293b;
-                            --bg-dark: #020617;
-                            --border: #334155;
-                            --card-bg: #1e293b;
-                            --card-border: #334155;
-                            --ia-bg: rgba(59, 130, 246, 0.12);
-                            --footer-border: #334155;
-                        }
-                    }
-
-                    @page { margin: 15mm 12mm; }
+                    @page { margin: 12mm 10mm; }
                     
                     * { margin: 0; padding: 0; box-sizing: border-box; }
                     
                     body { 
                         font-family: 'Segoe UI', -apple-system, Arial, sans-serif; 
-                        color: var(--text-primary); 
-                        background: var(--bg-white);
+                        color: var(--text-white);
+                        background: var(--gradient-bg);
                         line-height: 1.6;
                         padding: 0;
-                        transition: none;
+                        min-height: 100vh;
                     }
 
-                    /* Cover */
+                    /* ===== COVER PAGE ===== */
                     .cover {
-                        background: var(--gradient-2);
+                        background: var(--gradient-bg);
                         color: white;
-                        padding: 50px 36px;
+                        padding: 60px 40px;
                         text-align: center;
                         page-break-after: always;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
-                        min-height: 90vh;
+                        min-height: 95vh;
                     }
-                    .cover h1 { font-size: 38px; margin-bottom: 8px; }
+                    .cover h1 { font-size: 42px; margin-bottom: 10px; letter-spacing: -1px; }
                     .cover h1 span { color: var(--accent); }
-                    .cover .tagline { font-size: 17px; opacity: 0.85; margin-bottom: 14px; }
-                    .cover .pitch { font-size: 14px; opacity: 0.75; max-width: 600px; margin: 0 auto 24px; line-height: 1.7; font-style: italic; }
-                    .cover .subtitle { font-size: 15px; opacity: 0.7; max-width: 550px; margin: 0 auto; line-height: 1.7; }
-                    .cover .date { margin-top: 36px; font-size: 13px; opacity: 0.5; }
+                    .cover .tagline { font-size: 18px; color: var(--text-muted); margin-bottom: 16px; }
+                    .cover .pitch { font-size: 15px; color: var(--text-muted); max-width: 650px; margin: 0 auto 28px; line-height: 1.8; font-style: italic; }
+                    .cover .subtitle { font-size: 16px; color: var(--text-dim); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+                    .cover .date { margin-top: 40px; font-size: 14px; color: var(--text-dim); }
 
-                    /* Sections */
-                    .section { padding: 28px 32px; page-break-inside: avoid; }
+                    /* ===== ALL SECTIONS - Same dark background ===== */
+                    .section { 
+                        padding: 32px 36px; 
+                        page-break-inside: avoid;
+                        background: var(--gradient-bg);
+                        color: var(--text-white);
+                    }
                     
                     .section h2 { 
-                        font-size: 22px; 
+                        font-size: 24px; 
                         color: var(--primary); 
                         border-bottom: 3px solid var(--primary); 
-                        padding-bottom: 6px; 
-                        margin-bottom: 14px; 
+                        padding-bottom: 8px; 
+                        margin-bottom: 16px; 
                     }
                     
                     .section h3.cat-title {
-                        font-size: 15px;
-                        color: var(--text-primary);
-                        margin: 18px 0 8px;
-                        padding-left: 10px;
+                        font-size: 16px;
+                        color: var(--text-white);
+                        margin: 20px 0 8px;
+                        padding-left: 12px;
                         border-left: 3px solid var(--primary);
                         font-weight: 700;
                     }
                     
                     .section p { 
                         margin-bottom: 10px; 
-                        color: var(--text-secondary); 
-                        font-size: 12.5px; 
+                        color: var(--text-muted); 
+                        font-size: 13px; 
                     }
 
                     .section .intro-text {
-                        font-size: 13px;
-                        margin-bottom: 14px;
+                        font-size: 13.5px;
+                        color: var(--text-muted);
+                        margin-bottom: 16px;
                         line-height: 1.7;
                     }
 
-                    /* Services Grid */
+                    .section .cat-desc {
+                        font-size: 12px;
+                        color: var(--text-dim);
+                        margin-bottom: 10px;
+                        font-style: italic;
+                    }
+
+                    /* ===== SERVICES GRID ===== */
                     .services-grid { 
                         display: grid; 
                         grid-template-columns: 1fr 1fr; 
-                        gap: 10px; 
+                        gap: 12px; 
                         margin-top: 10px; 
                     }
                     
                     .service-item { 
                         background: var(--card-bg); 
-                        padding: 12px 14px; 
-                        border-radius: 8px; 
-                        border-left: 4px solid var(--primary); 
+                        padding: 14px 16px; 
+                        border-radius: 10px; 
                         border: 1px solid var(--card-border);
-                        border-left-width: 4px;
+                        border-left: 4px solid var(--primary);
+                        transition: background 0.2s;
                     }
                     .service-item h3 { 
-                        font-size: 12.5px; 
-                        color: var(--text-primary); 
-                        margin-bottom: 3px; 
+                        font-size: 13px; 
+                        color: var(--text-white); 
+                        margin-bottom: 4px; 
                         font-weight: 700;
                     }
                     .service-item p { 
-                        font-size: 11px; 
-                        color: var(--text-secondary); 
+                        font-size: 11.5px; 
+                        color: var(--text-muted); 
                         margin: 0; 
                         line-height: 1.5;
                     }
 
-                    /* IA Grid */
+                    /* ===== IA GRID ===== */
                     .ia-grid { 
                         display: grid; 
                         grid-template-columns: 1fr 1fr; 
-                        gap: 10px; 
-                        margin-top: 10px; 
+                        gap: 12px; 
+                        margin-top: 12px; 
                     }
                     .ia-item { 
-                        background: var(--ia-bg); 
-                        padding: 12px; 
-                        border-radius: 8px; 
+                        background: var(--card-bg); 
+                        padding: 14px; 
+                        border-radius: 10px; 
                         border: 1px solid var(--card-border);
                     }
                     .ia-item h3 { 
-                        font-size: 12px; 
-                        color: var(--primary); 
-                        margin-bottom: 3px; 
+                        font-size: 12.5px; 
+                        color: var(--accent); 
+                        margin-bottom: 4px; 
                         font-weight: 700;
                     }
                     .ia-item p { 
-                        font-size: 10.5px; 
-                        color: var(--text-secondary); 
+                        font-size: 11px; 
+                        color: var(--text-muted); 
                         margin: 0; 
                         line-height: 1.5;
                     }
 
-                    /* Footer */
+                    /* ===== FOOTER ===== */
                     .footer-text { 
                         text-align: center; 
-                        padding: 18px; 
-                        font-size: 11px; 
-                        color: var(--text-light); 
-                        border-top: 1px solid var(--footer-border); 
-                        margin-top: 24px; 
+                        padding: 20px; 
+                        font-size: 12px; 
+                        color: var(--text-dim); 
+                        border-top: 1px solid var(--divider); 
+                        margin-top: 28px; 
                     }
 
                     .quote-text {
-                        margin-top: 20px;
+                        margin-top: 24px;
                         font-style: italic;
-                        color: var(--text-secondary);
-                        font-size: 13px;
+                        color: var(--text-muted);
+                        font-size: 14px;
                         text-align: center;
-                        padding: 16px 0;
-                        border-top: 1px solid var(--footer-border);
+                        padding: 18px 0;
+                        border-top: 1px solid var(--divider);
                     }
 
-                    /* Responsive for small screens */
-                    @media (max-width: 600px) {
-                        .cover { padding: 36px 24px; min-height: auto; }
-                        .cover h1 { font-size: 28px; }
+                    /* ===== RESPONSIVE ===== */
+                    @media (max-width: 768px) {
+                        .cover { padding: 40px 28px; min-height: auto; }
+                        .cover h1 { font-size: 32px; }
+                        .cover .pitch { font-size: 13px; }
+                        .cover .subtitle { font-size: 14px; }
+                        .section { padding: 24px 22px; }
+                        .section h2 { font-size: 20px; }
+                        .services-grid { grid-template-columns: 1fr; gap: 10px; }
+                        .ia-grid { grid-template-columns: 1fr; gap: 10px; }
+                        .service-item { padding: 12px 14px; }
+                        .service-item h3 { font-size: 12.5px; }
+                        .service-item p { font-size: 11px; }
+                        .ia-item { padding: 12px; }
+                        .ia-item h3 { font-size: 12px; }
+                        .ia-item p { font-size: 10.5px; }
+                    }
+
+                    @media (max-width: 480px) {
+                        .cover { padding: 28px 18px; }
+                        .cover h1 { font-size: 26px; }
+                        .cover .tagline { font-size: 15px; }
                         .cover .pitch { font-size: 12px; }
-                        .cover .subtitle { font-size: 13px; }
-                        .section { padding: 20px 18px; }
-                        .section h2 { font-size: 18px; }
-                        .services-grid { grid-template-columns: 1fr; }
-                        .ia-grid { grid-template-columns: 1fr; }
-                        .service-item h3 { font-size: 12px; }
+                        .cover .subtitle { font-size: 12px; }
+                        .section { padding: 18px 14px; }
+                        .section h2 { font-size: 17px; }
+                        .section h3.cat-title { font-size: 14px; }
+                        .section .intro-text { font-size: 12px; }
+                        .service-item { padding: 10px 12px; }
+                        .service-item h3 { font-size: 11.5px; }
                         .service-item p { font-size: 10.5px; }
-                    }
-
-                    @media (max-width: 400px) {
-                        .cover { padding: 24px 16px; }
-                        .cover h1 { font-size: 22px; }
-                        .section { padding: 16px 12px; }
-                        .section h2 { font-size: 16px; }
-                        .section h3.cat-title { font-size: 13px; }
-                        .service-item { padding: 10px; }
                         .ia-item { padding: 10px; }
+                        .ia-item h3 { font-size: 11px; }
+                        .ia-item p { font-size: 10px; }
+                        .footer-text { font-size: 10px; padding: 14px; }
+                        .quote-text { font-size: 12px; padding: 14px 0; }
                     }
 
-                    /* Print-specific */
+                    @media (max-width: 360px) {
+                        .cover { padding: 20px 12px; }
+                        .cover h1 { font-size: 22px; }
+                        .section { padding: 14px 10px; }
+                        .section h2 { font-size: 15px; }
+                        .service-item { padding: 8px 10px; }
+                        .ia-item { padding: 8px; }
+                    }
+
+                    /* ===== PRINT ===== */
                     @media print {
-                        body { background: white; }
-                        .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                        .service-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                        .ia-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                        body { 
+                            background: #0f172a !important; 
+                            -webkit-print-color-adjust: exact; 
+                            print-color-adjust: exact; 
+                        }
+                        .cover { 
+                            -webkit-print-color-adjust: exact; 
+                            print-color-adjust: exact; 
+                        }
+                        .section { 
+                            -webkit-print-color-adjust: exact; 
+                            print-color-adjust: exact; 
+                        }
+                        .service-item, .ia-item { 
+                            -webkit-print-color-adjust: exact; 
+                            print-color-adjust: exact; 
+                        }
                     }
                 </style>
             </head>
             <body>
+                <!-- ===== COVER ===== -->
                 <div class="cover">
                     <h1>Nexum <span>Solutions</span></h1>
                     <p class="tagline">Conectando la Estrategia con el Futuro Digital</p>
@@ -472,12 +497,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="date">Brochure Corporativo — ${currentYear}</p>
                 </div>
 
+                <!-- ===== SERVICIOS ===== -->
                 <div class="section">
                     <h2>Nuestros Servicios</h2>
                     <p class="intro-text">Agrupamos nuestros servicios bajo los desafíos que resolvemos para impulsar su transformación digital.</p>
                     
                     <h3 class="cat-title">I. Estrategia y Gobierno — La Fundación</h3>
-                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Aseguramos que la tecnología sea el motor del negocio, no un gasto operativo.</p>
+                    <p class="cat-desc">Aseguramos que la tecnología sea el motor del negocio, no un gasto operativo.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Consultoría TI Estratégica</h3>
@@ -498,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
 
                     <h3 class="cat-title">II. Eficiencia Operativa — El Motor</h3>
-                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Maximizamos el rendimiento de sus activos mediante metodologías probadas.</p>
+                    <p class="cat-desc">Maximizamos el rendimiento de sus activos mediante metodologías probadas.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Gestión ITSM & ITIL</h3>
@@ -527,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
 
                     <h3 class="cat-title">III. Innovación y Capa Agéntica — La Evolución</h3>
-                    <p style="font-size:11.5px;color:var(--text-secondary);margin-bottom:8px;">Construimos el mañana con soluciones inteligentes diseñadas para escalar.</p>
+                    <p class="cat-desc">Construimos el mañana con soluciones inteligentes diseñadas para escalar.</p>
                     <div class="services-grid">
                         <div class="service-item">
                             <h3>Desarrollo de Capa Agéntica</h3>
@@ -548,6 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
+                <!-- ===== IA AGÉNTICA ===== -->
                 <div class="section">
                     <h2>Casos de Uso de IA Agéntica</h2>
                     <p class="intro-text">Nuestra mayor ventaja competitiva. Sistemas autónomos que aprenden, deciden y ejecutan para transformar su operación.</p>
@@ -579,6 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
+                <!-- ===== CONTACTO ===== -->
                 <div class="section">
                     <h2>Contacto</h2>
                     <p class="intro-text">Para más información sobre nuestros servicios y soluciones, lo invitamos a visitar nuestro sitio web y completar el formulario de contacto. Estamos listos para escuchar sus necesidades y ofrecerle la solución que su empresa merece.</p>
