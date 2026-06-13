@@ -626,6 +626,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p>Orquestación de flujos de trabajo complejos integrando sistemas legacy con nuevas tecnologías.</p>
                         </div>
                         <div class="ia-item">
+                            <h3>👥 Gestión Estratégica WMO</h3>
+                            <p>Agente autónomo que analiza la estructura organizacional, evalúa capacidades del personal, identifica brechas de habilidades y recomienda mejoras estratégicas en funciones y perfiles para optimizar la productividad.</p>
+                        </div>
+                        <div class="ia-item">
                             <h3>🛡️ Resiliencia y Continuidad</h3>
                             <p>Ejecución automática de protocolos BCP/DRP ante incidentes y coordinación de recuperación.</p>
                         </div>
