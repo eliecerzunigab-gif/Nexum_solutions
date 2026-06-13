@@ -750,6 +750,31 @@ img { max-width: 100%; display: block; }
     color: var(--text-primary);
 }
 
+/* Card tags for compact service cards */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.card-tags span {
+    display: inline-block;
+    background: var(--primary-bg);
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.servicio-card:hover .card-tags span {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--primary-dark);
+}
+
+
 /* ============================================
    CATEGORÍAS DE SERVICIOS
    ============================================ */
