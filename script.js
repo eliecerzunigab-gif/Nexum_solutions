@@ -2,6 +2,97 @@
    NEXUM SOLUTIONS - Main JavaScript
    ============================================ */
 
+// ==========================================
+// SECURITY & PROTECTION LAYER
+// ==========================================
+(function() {
+    // --- Disable right-click context menu ---
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // --- Disable keyboard shortcuts for devtools ---
+    document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+I (Inspect)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+C (Inspect Element)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+U (View Source)
+        if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+S (Save Page)
+        if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // --- Disable text selection and copy ---
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    document.addEventListener('paste', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // --- Anti-devtools: detect devtools opening ---
+    let devtoolsOpen = false;
+    const checkDevTools = function() {
+        const threshold = 160;
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        if (widthThreshold || heightThreshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                document.body.innerHTML = `
+                    <div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:white;font-family:sans-serif;text-align:center;padding:20px;">
+                        <div>
+                            <h1 style="font-size:2rem;margin-bottom:16px;">🔒 Acceso Restringido</h1>
+                            <p style="font-size:1.1rem;color:rgba(255,255,255,0.7);">Las herramientas de desarrollo no están permitidas en este sitio.</p>
+                            <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);margin-top:12px;">Por favor, cierre DevTools para continuar navegando.</p>
+                        </div>
+                    </div>
+                `;
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    };
+    setInterval(checkDevTools, 1000);
+})();
+
+// ==========================================
+// MAIN APPLICATION
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================

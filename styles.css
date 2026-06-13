@@ -199,6 +199,13 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     transition: background 0.3s ease, color 0.3s ease;
+    /* Security: disable text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Security: disable touch callout on iOS */
+    -webkit-touch-callout: none;
 }
 
 a {
