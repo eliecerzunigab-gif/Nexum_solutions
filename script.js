@@ -76,20 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // SCROLL ANIMATIONS (Intersection Observer)
+    // SCROLL ANIMATIONS (Intersection Observer) - Premium
     // ==========================================
     const animateElements = document.querySelectorAll('.servicio-card, .met-item, .stat-item, .contact-item, .ia-card');
 
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Stagger animation with spring-like easing
+                const delay = parseFloat(entry.target.dataset.delay) || 0;
+                entry.target.style.transition = `opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+                entry.target.style.transitionDelay = `${delay * 0.08}s`;
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = 'translateY(0) scale(1)';
                 observer.unobserve(entry.target);
             }
         });
@@ -97,14 +101,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease, transform 0.6s ease`;
-        
-        // Add delay based on data-delay attribute or index
-        const delay = el.dataset.delay || 0;
-        el.style.transitionDelay = `${delay * 0.1}s`;
-        
+        el.style.transform = 'translateY(40px) scale(0.97)';
+        el.style.willChange = 'opacity, transform';
         observer.observe(el);
+    });
+
+    // ==========================================
+    // 3D TILT EFFECT ON SERVICE CARDS
+    // ==========================================
+    const tiltCards = document.querySelectorAll('.servicio-card');
+    
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate rotation (max ±5 degrees)
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+            
+            card.style.transform = `translateY(-8px) scale(1.01) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            card.style.transition = 'transform 0.1s ease';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1) perspective(800px) rotateX(0deg) rotateY(0deg)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        });
     });
 
     // ==========================================
