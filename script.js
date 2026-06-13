@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="service-item">
                             <h3>Benchmarking y Reducción de Costos</h3>
-                            <p>Proyectos de eficiencia financiera y maximización de inversiones TI.</p>
+                            <p>Proyectos de eficiencia financiera y maximización de inversiones TI. Caso destacado: migración Oracle → PostgreSQL con ahorro del 70% en licencias.</p>
                         </div>
                         <div class="service-item">
                             <h3>Operational Model & Transition</h3>
