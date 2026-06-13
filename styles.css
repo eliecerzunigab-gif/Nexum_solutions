@@ -1780,7 +1780,17 @@ img { max-width: 100%; display: block; }
     .stat-number { font-size: 2.2rem; }
     .footer-grid { gap: 32px; }
     .categoria-header h3 { font-size: 1.3rem; }
+    /* Casos de Éxito tablets */
+    .casos-grid { gap: 20px; }
+    .caso-featured .caso-content { padding: 32px 32px; }
+    .caso-featured h3 { font-size: 1.3rem; }
+    .caso-desc { font-size: 0.9rem; }
+    .caso-metrics { gap: 12px; max-width: 100%; }
+    .caso-metric-value { font-size: 1.2rem; }
+    .caso-card:not(.caso-featured) { padding: 28px 22px; }
+    .caso-card:not(.caso-featured) h3 { font-size: 1.05rem; }
 }
+
 
 /* --- Mobile Landscape & Small Tablets (640px - 767px) --- */
 @media (max-width: 767px) {
@@ -1924,7 +1934,23 @@ img { max-width: 100%; display: block; }
         right: 20px; 
         font-size: 1rem; 
     }
+
+    /* Casos de Éxito mobile landscape */
+    .casos-grid { grid-template-columns: 1fr; gap: 16px; }
+    .caso-featured .caso-content { padding: 28px 24px; }
+    .caso-featured h3 { font-size: 1.2rem; }
+    .caso-desc { font-size: 0.88rem; }
+    .caso-metrics { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+        max-width: 100%;
+    }
+    .caso-metric-value { font-size: 1.15rem; }
+    .caso-card:not(.caso-featured) { padding: 24px 20px; }
+    .caso-card:not(.caso-featured) h3 { font-size: 1rem; }
+    .caso-card:not(.caso-featured) p { font-size: 0.85rem; }
 }
+
 
 /* --- Mobile Portrait (480px - 639px) --- */
 @media (max-width: 639px) {
@@ -1980,7 +2006,24 @@ img { max-width: 100%; display: block; }
         justify-content: center;
     }
     .btn-large { padding: 14px 28px; }
+
+    /* --- Casos de Éxito responsive --- */
+    .casos-grid { grid-template-columns: 1fr; gap: 16px; }
+    .caso-featured .caso-content { padding: 28px 20px; }
+    .caso-featured h3 { font-size: 1.15rem; }
+    .caso-desc { font-size: 0.85rem; }
+    .caso-metrics { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+        max-width: 100%;
+    }
+    .caso-metric-value { font-size: 1.1rem; }
+    .caso-metric-label { font-size: 0.62rem; }
+    .caso-card:not(.caso-featured) { padding: 24px 18px; }
+    .caso-card:not(.caso-featured) h3 { font-size: 1rem; }
+    .caso-card:not(.caso-featured) p { font-size: 0.85rem; }
 }
+
 
 /* --- Small Mobile (320px - 479px) --- */
 @media (max-width: 479px) {
