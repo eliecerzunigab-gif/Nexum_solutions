@@ -1298,6 +1298,44 @@ img { max-width: 100%; display: block; }
     gap: 6px;
 }
 
+/* VMO metrics inside regular card */
+.caso-metrics-vmo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.caso-metric-vmo {
+    text-align: center;
+    padding: 10px 6px;
+    background: var(--primary-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
+}
+
+.caso-card-vmo:hover .caso-metric-vmo {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.caso-metric-vmo .caso-metric-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.caso-metric-vmo .caso-metric-label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
 .caso-card:not(.caso-featured) .caso-tags span {
     display: inline-block;
     background: var(--primary-bg);
